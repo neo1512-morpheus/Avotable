@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Set dark fallback background to prevent flash */
+body {
+  background-color: #181818; /* Very dark charcoal to match the final image tone */
+}
+
+/* Desktop styles - keep unchanged */
+@media (min-width: 769px) {
+  .main-background-container {
+    /* Desktop background with darkening overlay */
+    background-image: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)), url(https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  .content-section {
+    background: transparent;
+  }
+  
+  /*
+   * DESKTOP BUTTON ALIGNMENT FIX
+   * Center the Order Now button horizontally on desktop displays only
+   */
+  .order-now-button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Mobile-only styles - full-page parallax background */
+@media (max-width: 768px) {
+  body {
+    background-color: #181818; /* Consistent dark fallback for mobile */
+  }
+  
+  /* Full-page parallax background for mobile */
+  .main-background-container {
+    background-image: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)), url(https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx) !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important; /* Creates the parallax effect */
+    min-height: 100vh !important;
+  }
+  
+  /* Make all content sections transparent to show the main background */
+  #hero-section,
+  .content-section {
+    background: transparent !important;
+    background-image: none !important;
+  }
+  
+  /*
+   * FINAL MOBILE HERO LAYOUT FIX
+   * This enforces a clean, vertical stacking order for all hero elements using Flexbox
+   */
+  .hero-content-wrapper {
+    display: flex;
+    
+    /* This is the key fix: It forces all child elements into a vertical column */
+    flex-direction: column;
+    
+    /* This horizontally centers all the items in the column */
+    align-items: center;
+    
+    /* This creates a consistent vertical space BETWEEN each element in the stack */
+    gap: 24px; /* Adjust this value for more or less space */
+    
+    /* Ensures the text within the elements is also centered */
+    text-align: center;
+  }
+
+  /*
+   * Safeguard to prevent conflicts.
+   * Remove any individual top/bottom margins from the elements, as the 'gap' property now handles the spacing.
+   */
+  .info-cards-container,
+  .main-headline-container,
+  .sub-headline-paragraph,
+  .order-now-button-wrapper {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Mobile info cards container - separated cards layout */
+  .info-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px; /* Space between the two cards */
+    width: 100%;
+    position: relative; /* Required for z-index */
+    z-index: 15; /* Ensure cards container is on top */
+  }
+
+  /* Individual info card styling */
+  .info-card {
+    /* Apply the original card styling to EACH individual card */
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 12px 16px;
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.2);
+    
+    /* Flex properties for content inside the card (icon + text) */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    /* Apply the floating animation */
+    animation: mobile-float-animation 5s ease-in-out infinite;
+    
+    /* Ensure individual cards are also on top */
+    position: relative;
+    z-index: 16;
+  }
+
+  /* Make the second card's animation offset for organic feel */
+  .info-card:nth-child(2) {
+    animation-delay: -2.5s; /* Starts the animation halfway through its cycle */
+  }
+  
+  /* Mobile layout fixes for About Us section */
+  .about-us-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo-wrapper {
+    order: 1; /* Logo appears first on mobile */
+  }
+  
+  .text-wrapper {
+    order: 2; /* Text appears second on mobile */
+  }
+}
+
+/* Desktop layout for About Us section */
+@media (min-width: 1024px) {
+  .about-us-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .logo-wrapper {
+    order: 1;
+  }
+  
+  .text-wrapper {
+    order: 2;
+  }
+}
+
+/* Hero Section Enhancements */
+@keyframes neon-pulse {
+  0% {
+    text-shadow: 
+      0 0 4px #34D399,
+      0 0 8px #34D399,
+      0 0 15px rgba(16, 185, 129, 0.7),
+      2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    text-shadow: 
+      0 0 8px #34D399,
+      0 0 16px #34D399,
+      0 0 25px rgba(16, 185, 129, 0.8),
+      2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0px);
+  }
+  50% {
+    transform: translateY(-50%) translateX(10px);
+  }
+}
+
+@keyframes float-mobile {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* New mobile floating animation for separated cards */
+@keyframes mobile-float-animation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Floating cards animations */
+.floating-card-left {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-card-right {
+  animation: float 6s ease-in-out infinite 3s;
+}
+
+.floating-card-mobile {
+  animation: float-mobile 4s ease-in-out infinite;
+}
+
+/* Enhanced neon text effect */
+.neon-text {
+  position: relative;
+}
+
+.neon-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: blur(2px);
+  opacity: 0.8;
+}
+
+/* Particle canvas styling */
+canvas {
+  pointer-events: none;
+}
+
+/* Enhanced button glow on hover */
+.order-now-button:hover {
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.5);
+}
+
+/* Responsive adjustments for floating cards */
+@media (max-width: 1024px) {
+  .floating-card-left,
+  .floating-card-right {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .floating-card-mobile {
+    display: none;
+  }
+}
+
+/* Enhanced text shadows for better readability */
+.enhanced-text-shadow {
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(52, 211, 153, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 211, 153, 0.7);
+}
+
+/* Modal button hover effects */
+.modal-button-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-button-hover:hover {
+  transform: scale(1.03);
+}
+
+/* Enhanced modal backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Improved button animations */
+@keyframes button-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(252, 128, 25, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(252, 128, 25, 0.6);
+  }
+}
+
+@keyframes button-glow-red {
+  0% {
+    box-shadow: 0 0 5px rgba(239, 79, 95, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(239, 79, 95, 0.6);
+  }
+}
+
+/* Instagram gallery hover effects */
+.instagram-gallery-image {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.instagram-gallery-image:hover {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
