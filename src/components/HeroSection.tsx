@@ -229,12 +229,34 @@ const HeroSection: React.FC = () => {
           >
             The Avocado Table offers a <span className="text-forest-400 font-medium">vibrant menu</span> of healthy and delicious dishes, all centered around the <span className="text-forest-400 font-medium">superfood you love</span>.
           </p>
+          <div 
+            className="flex flex-wrap justify-center items-center gap-4 mt-6 text-lg animate-fade-in-up opacity-0"
+            style={{ 
+              animationDelay: '0.5s', 
+              animationFillMode: 'forwards',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
+            }}
+          >
+            <span className="text-forest-400 font-semibold">✓ Made fresh daily</span>
+            <span className="text-forest-400 font-semibold">✓ Limited quantities</span>
+            <span className="text-forest-400 font-semibold">✓ As seen on Swiggy & Zomato</span>
+          </div>
+          <p 
+            className="text-orange-400 font-bold text-lg mt-4 animate-fade-in-up opacity-0"
+            style={{ 
+              animationDelay: '0.7s', 
+              animationFillMode: 'forwards',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
+            }}
+          >
+            ⏰ Order within 2 hours for today's fresh batch!
+          </p>
         </div>
         
         {/* Order Now Button */}
         <div 
           className="order-now-button-wrapper animate-fade-in-up opacity-0"
-          style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
+          style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
         >
           <OrderNowButton 
             onClick={openOrderModal}
@@ -243,7 +265,7 @@ const HeroSection: React.FC = () => {
             background="#1F2937"
           >
             <span className="whitespace-pre-wrap text-center font-bold tracking-tight text-white uppercase">
-              Order Now
+              Get Fresh Meals Delivered
             </span>
           </OrderNowButton>
         </div>

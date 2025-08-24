@@ -39,12 +39,14 @@ const MenuSection: React.FC = () => {
     {
       image: "https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEOn8pNcbshTW8QfYrSPweVc9NIBoGiDsJ7ECn",
       title: "The Ultimate Avocado Sandwich",
-      description: "Imagine sinking your teeth into soft brown bread, embracing a velvety blend of avocado, garlic, and green chilli. Layered with tangy hummus and a refreshing crunch of cool cucumber, tomato, and crisp lettuce. This isn't just a sandwich; it's a feel-good experience in every single bite."
+      description: "Imagine sinking your teeth into soft brown bread, embracing a velvety blend of avocado, garlic, and green chilli. Layered with tangy hummus and a refreshing crunch of cool cucumber, tomato, and crisp lettuce. This isn't just a sandwich; it's a feel-good experience in every single bite.",
+      popular: true
     },
     {
       image: "https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEKLLr3LCxLMDIAT2lF91Zb3n4vp6BJteiEVSX",
       title: "Artisanal Avocado Toast",
-      description: "A masterpiece of texture and taste. We start with crunchy, artisanal sourdough, smother it in our signature creamy avocado and zesty pesto, and top it with sun-kissed cherry tomatoes and a nutty super-seed crunch. It's bold, it's fresh, it's a whole vibe."
+      description: "A masterpiece of texture and taste. We start with crunchy, artisanal sourdough, smother it in our signature creamy avocado and zesty pesto, and top it with sun-kissed cherry tomatoes and a nutty super-seed crunch. It's bold, it's fresh, it's a whole vibe.",
+      popular: true
     },
     {
       image: "https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpENaLsecI1bClnv9iLZD0xEHa5uwm327JpcVdk",
@@ -82,14 +84,30 @@ const MenuSection: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {menuItems.map((item, index) => (
-            <MenuCard
-              key={index}
-              image={item.image}
-              title={item.title}
-              description={item.description}
-              className="menu-card opacity-0"
-            />
+            <div key={index} className="relative">
+              {item.popular && (
+                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10 transform rotate-12">
+                  MOST POPULAR
+                </div>
+              )}
+              <MenuCard
+                image={item.image}
+                title={item.title}
+                description={item.description}
+                className="menu-card opacity-0"
+              />
+            </div>
           ))}
+        </div>
+        
+        {/* Additional CTA */}
+        <div className="text-center mt-12">
+          <p 
+            className="text-orange-400 font-bold text-lg mb-4"
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}
+          >
+            🔥 Only 50 orders available daily - Order now!
+          </p>
         </div>
       </div>
     </section>

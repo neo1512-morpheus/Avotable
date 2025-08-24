@@ -35,11 +35,24 @@ const MenuCard: React.FC<MenuCardProps> = ({ image, title, description, classNam
           {description}
         </p>
         
+        {/* Health badges */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          <span className="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">
+            Heart Healthy
+          </span>
+          <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full">
+            High Protein
+          </span>
+          <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2 py-1 rounded-full">
+            Vegan
+          </span>
+        </div>
+        
         <button 
           onClick={openOrderModal}
-          className="w-full bg-forest-500 hover:bg-forest-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 mt-auto"
+          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 mt-auto transform hover:scale-105 shadow-lg hover:shadow-xl"
         >
-          Order Now
+          Order This Fresh
         </button>
       </div>
     </div>
