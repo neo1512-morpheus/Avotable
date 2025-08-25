@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Instagram } from 'lucide-react';
-import ProgressiveImage from './ui/ProgressiveImage';
 
 const InstagramSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -30,7 +29,7 @@ const InstagramSection: React.FC = () => {
     setImageErrors(prev => new Set([...prev, index]));
   };
 
-  // Using the same compressed images from menu section for better performance
+  // Curated gallery images from the restaurant's best dishes
   const instagramPosts = [
     {
       src: "https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEKLLr3LCxLMDIAT2lF91Zb3n4vp6BJteiEVSX",
@@ -101,11 +100,11 @@ const InstagramSection: React.FC = () => {
               rel="noopener noreferrer"
               className="instagram-gallery-image aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 block"
             >
-              <ProgressiveImage
-                src={post.src}
+              <img 
+                src={imageErrors.has(index) ? post.fallback : post.src}
                 alt={post.alt}
                 className="w-full h-full object-cover"
-                fallback={post.fallback}
+                onError={() => handleImageError(index)}
                 loading="lazy"
               />
             </a>

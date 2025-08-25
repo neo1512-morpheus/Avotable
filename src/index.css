@@ -4,18 +4,15 @@
 
 /* Set dark fallback background to prevent flash */
 body {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #1a202c 100%); /* Rich gradient fallback */
+  background-color: #181818; /* Very dark charcoal to match the final image tone */
   padding-top: 80px; /* Account for fixed header */
 }
 
 /* Desktop styles - keep unchanged */
 @media (min-width: 769px) {
   .main-background-container {
-    /* Desktop background with darkening overlay and fallback */
-    background: 
-      linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)),
-      linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #1a202c 100%),
-      url(https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx);
+    /* Desktop background with darkening overlay */
+    background-image: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)), url(https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx);
     background-attachment: fixed;
     background-size: cover;
     background-position: center center;
@@ -43,16 +40,13 @@ body {
 /* Mobile-only styles - full-page parallax background */
 @media (max-width: 768px) {
   body {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #1a202c 100%); /* Rich gradient fallback for mobile */
+    background-color: #181818; /* Consistent dark fallback for mobile */
     padding-top: 64px; /* Account for mobile header */
   }
   
   /* Full-page parallax background for mobile */
   .main-background-container {
-    background: 
-      linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)),
-      linear-gradient(135deg, #1a1a1a 0%, #2d3748 50%, #1a202c 100%),
-      url(https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx) !important;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)), url(https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx) !important;
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
@@ -340,22 +334,8 @@ canvas {
 .instagram-gallery-image {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-}
 
-/* Loading skeleton animations */
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
 .instagram-gallery-image:hover {
   transform: scale(1.05);
   filter: brightness(0.9);
-.shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200px 100%;
-  animation: shimmer 1.5s infinite;
 }

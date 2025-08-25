@@ -1,15 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { OrderNowButton } from './ui/order-now-button';
 import { Leaf, Heart } from 'lucide-react';
-import { useImagePreloader } from '../hooks/useImagePreloader';
 
 const HeroSection: React.FC = () => {
   const particlesRef = useRef<HTMLCanvasElement>(null);
-  
-  // Preload critical hero background image
-  const { loaded: heroImageLoaded } = useImagePreloader([
-    'https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx'
-  ]);
 
   const openOrderModal = () => {
     const modal = document.getElementById('order-modal');
@@ -91,7 +85,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className={`relative h-screen flex items-center justify-center overflow-hidden w-full transition-all duration-1000 ${heroImageLoaded ? 'opacity-100' : 'opacity-90'}`}>
+    <section className="relative h-screen flex items-center justify-center overflow-hidden w-full">
       {/* Animated Particles Background */}
       <canvas
         ref={particlesRef}
