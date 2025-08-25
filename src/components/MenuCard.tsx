@@ -1,4 +1,5 @@
 import React from 'react';
+import ProgressiveImage from './ui/ProgressiveImage';
 
 interface MenuCardProps {
   image: string;
@@ -18,11 +19,12 @@ const MenuCard: React.FC<MenuCardProps> = ({ image, title, description, classNam
 
   return (
     <div className={`bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden flex flex-col h-full ${className}`}>
-      <div className="aspect-w-16 aspect-h-12 overflow-hidden flex-shrink-0">
-        <img 
-          src={image} 
+      <div className="aspect-w-16 aspect-h-12 overflow-hidden flex-shrink-0 relative">
+        <ProgressiveImage
+          src={image}
           alt={title}
           className="w-full h-64 object-cover"
+          loading="lazy"
         />
       </div>
       
