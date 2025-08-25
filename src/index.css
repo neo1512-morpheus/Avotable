@@ -340,7 +340,6 @@ canvas {
 .instagram-gallery-image {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
-}
 
 /* Loading skeleton animations */
 @keyframes shimmer {
