@@ -2,15 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { OrderNowButton } from './ui/order-now-button';
 import { Leaf, Heart } from 'lucide-react';
 import { useImagePreloader } from '../hooks/useImagePreloader';
-import { useImagePreloader } from '../hooks/useImagePreloader';
 
 const HeroSection: React.FC = () => {
   const particlesRef = useRef<HTMLCanvasElement>(null);
-  
-  // Preload critical hero background image
-  const { loaded: heroImageLoaded } = useImagePreloader([
-    'https://oyc9u5lfcg.ufs.sh/f/lRAiGHfLmtpEpYzbDMSmV2SIraKe0WUujA76wYsQtqB31Dkx'
-  ]);
   
   // Preload critical hero background image
   const { loaded: heroImageLoaded } = useImagePreloader([
